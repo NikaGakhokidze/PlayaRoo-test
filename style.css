@@ -1,12 +1,18 @@
 html, body {
     height: 100%;
+    font-family: Roboto, sans-serif;
+}
+
+/* Enforce Roboto across the entire project (including form controls) */
+*, *::before, *::after {
+    font-family: "Roboto", sans-serif;
 }
 
 body {
     margin: 0;
     color: #F4F4F4;
     background-color: #090A11;
-    font-family: Roboto;
+    gap: 72px;
 }
 
 .container {
@@ -14,7 +20,6 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 72px;
     background-image: url('assets/zigzag-line.png');
     background-repeat: no-repeat;
     background-position: calc(50% - 370px);
@@ -239,11 +244,6 @@ body {
     margin: 0
 }
 
-.gray-text {
-    color: #A6A8AB;
-    font-weight: 400;
-}
-
 .line-height {
     line-height: 130%;
 }
@@ -263,6 +263,7 @@ body {
     cursor: pointer;
     font-family: Roboto, sans-serif;
     font-size: 16px;
+    border: none;
 
 }
 
@@ -351,6 +352,7 @@ body {
     font-size: 16px;
     font-family: Roboto, sans-serif;
     cursor: pointer;
+    border: none;
 }
 
 .how-we-build-container {
@@ -402,6 +404,172 @@ body {
     margin-bottom: 32px;
 }
 
+.kick-off-container {
+    background-image: radial-gradient(#090A1100 0%, #48F5970D 5%),
+    url('assets/kick-off-background.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 64px;
+    height: 60vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: start;
+    padding: 94px 433px 94px 433px;
+    box-sizing: border-box;
+    border-top: 1px solid #878C914D;
+}
+
+.kick-off-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+
+    h1 {
+        font-size: 80px;
+        margin: 0;
+        width: 80%;
+    }
+
+    .get-in-touch-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #48F597;
+    width: 21%;
+    height: 52px;
+    gap: 12px;
+    padding: 6px 6px 6px 24px;
+    border-radius: 100px;
+    color: #090A11;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    cursor: pointer;
+    border: none;
+    }
+}
+
+.consultation-icon {
+    position: relative;
+    bottom: 155px;
+    left: 550px;
+}
+
+.min-call-icon {
+    position: relative;
+    bottom: 285px;
+    right: 470px;
+}
+
 .footer-container {
-    height: 500px;
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 70px 40px 70px;
+  background-image: url('assets/footer-background.png');
+  background-size: cover;
+  
+}
+
+.footer-title {
+  display: flex;
+  flex-direction: column;
+  gap: .15em;
+  font-size: clamp(48px, 10vw, 220px);
+  line-height: 125%;
+  letter-spacing: -3%;
+  font-weight: 700;
+  margin-top: 14%;
+  margin-left: 1.5%;
+}
+
+.footer-side-label {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 5%;
+  line-height: 140%;
+  pointer-events: none;         
+  height: 24%;
+  font-weight: 600;
+  color: #A6A8AB;
+  
+  .footer-side-label-brand {
+    color: #48F597;
+  }
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #A6A8AB;
+
+
+    .footer-contact-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+
+        p {
+            margin: 0;
+        }
+
+        h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+    }
+  }
+
+.social-media-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+
+    .social-media-icon-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 100px;
+        border: 1px solid #F4F4F4;
+    }
+
+}
+
+.footer-copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+
+.italic-text {
+    font-style: italic;
+}
+
+.gray-text {
+    color: #A6A8AB;
+    font-weight: 400;
 }
