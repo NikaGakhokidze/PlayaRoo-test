@@ -4,12 +4,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlayaRoo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <div class="container" >
 <header class="header-container">
     <div class="navbar">
             <img src="assets/Logo.png" alt="logo" width="211px" height="48px" />
-            <button class="contact-us-button">Contact us <img src="assets/arrow-icon.svg" alt="arrow-icon" width="40px" height="40px"  /> </button>
+            <div class="navbar-menu">
+                <button class="nav-button">Home</button>
+                <button class="nav-button">About us</button>
+                <button class="nav-button">Services</button>
+                <button class="contact-us-button">Contact us <img src="assets/arrow-icon.svg" alt="arrow-icon" width="40px" height="40px"  /> </button>
+            </div>
     </div>
     <div class="header-content">
         <img class="aa-container" src="assets/Aa Container.png" alt="Aa Container" width="140px" height="120px" />
@@ -29,15 +37,105 @@
 <body>
     
     <div class="about-us-container">
-        About us
+        <div class="about-us-text-container">
+            <div class="about-us-text-title-container">
+                <span class="green-dot"></span>
+            <h1>ABOUT US</h1>
+        </div>
+            <p class="gray-text line-height">
+                Our professional team will empower ideas through high-impact design and growth-focused strategy.
+            </p>
+        </div>
+        <div class="about-us-content">
+            <p class="about-us-content-text line-height">
+                PlayaRoo is a creative digital agency built for bold thinkers, disruptive startups, and modern brands. With a team of <span class="gray-text">visionaries, designers, and tech savvy storytellers, we don’t just deliver — we elevate.</span>
+            </p>
+            <button class="learn-more-button">Learn more <img src="assets/green-arrow-icon.svg" alt="arrow-icon" width="40px" height="40px"  /></button>
+        </div>
     </div>
 
 
     <div class="our-services-container">
-        Our Services
+        <div class="our-services-title-container">
+            <div class="our-services-title-container-text">
+            <div class="green-dot"></div>
+            <h1>
+                OUR SERVICES
+            </h1>
+        </div>
+        <div style="width: 70%;">
+        <p class="our-services-content-text">Crafted to Elevate your <span class="gray-text">digital presence and accelerate results.</span></p>
+    </div>
+    </div>
+    <div class="service-grid">
+        <article class="card">
+            <div class="num" aria-hidden="true"><img src="assets/Number-1.png" alt="Number-1" width="192px" height="192px" /></div>
+            <div class="service-grid-text-wrapper">
+            <h3>Branding & Identity</h3>
+            <p class="gray-text">We shape unforgettable brands from the ground up. Through strategic positioning, compelling naming, and a distinct visual identity, we build a cohesive brand story that captures your essence and forges a powerful connection with your audience.</p>
+        </div>
+        </article>
+        <article class="card service" data-tilt>
+            <div class="num" aria-hidden="true"><img src="assets/Number-2.png" alt="Number-1" width="192px" height="192px" /></div>
+            <div class="service-grid-text-wrapper">
+            <h3>Digital Marketing</h3>
+            <p class="gray-text">We use data to drive your digital growth. Our comprehensive digital marketing strategies, backed by in-depth audits and continuous analytics, integrate everything from SEO to social media management to ensure your message reaches the right people at the right time.</p>
+        </div>
+        </article>
+        <article class="card service" data-tilt>
+            <div class="num" aria-hidden="true"><img src="assets/Number-3.png" alt="Number-1" width="192px" height="192px" /></div>
+            <div class="service-grid-text-wrapper">
+                <h3>Advertising & Media Buying</h3>
+                <p class="gray-text">We amplify your message with precision-targeted advertising. From producing compelling digital ad content to executing strategic media buys across digital and traditional channels, we maximize your ROI and put your brand directly in front of your ideal customers.</p>
+            </div>
+        </article>
+        <article class="card service" data-tilt>
+            <div class="num" aria-hidden="true"><img src="assets/Number-4.png" alt="Number-1" width="192px" height="192px" /></div>
+            <div class="service-grid-text-wrapper">
+            <h3>Web Design and Development</h3>
+            <p class="gray-text">We create digital experiences that captivate and convert. Our approach begins with intuitive UI/UX design, meticulously crafting every interaction before our developers build a flawless, fast, and fully responsive website that works perfectly on any device.</p>
+        </div>
+        </article>
+    </div>
+    <button class="discover-more-button">Discover more 
+        <img src="assets/green-arrow-icon.svg" alt="arrow-icon" width="40px" height="40px"  />
+    </button>
     </div>
     <div class="how-we-build-container">
-        How we build
+        <div class="how-we-build-header-container">
+            <div class="how-we-build-header-text-container">
+                <div style="display: flex; flex-direction: row; gap: 12px; align-items: center;">
+                <div class="green-dot"></div>
+                <h1>How we build</h1>
+                </div>
+                <p class="how-we-build-header-text">Our Blueprint <span class="gray-text">to Your Success</span></p>
+            </div>
+        </div>
+        <div class="how-we-build-content-container">
+            <div class="how-we-build-content-item">
+                <div class="icon-wrapper"><img src="assets/brain-icon.png" alt="brain-icon" width="72px" height="72px" /></div>
+                <p class="gray-text" style="font-size: 20px">01</p>
+                <h1>Strategy-First Design</h1>
+                <p class="gray-text">We don't just make things pretty. Every design choice, from color to layout, is based on a deep understanding of your brand and your growth objectives.</p>
+            </div>
+            <div class="how-we-build-content-item">
+                <div class="icon-wrapper"><img src="assets/eye-icon.png" alt="eye-icon" width="72px" height="48px" /></div>
+                <p class="gray-text" style="font-size: 20px">02</p>
+                <h1>Radical Transparency</h1>
+                <p class="gray-text">No black boxes here. You'll have a clear view of our process, timelines, and communication from day one. We're your partners, not just your providers.</p>
+            </div>
+            <div class="how-we-build-content-item">
+                <div class="icon-wrapper"><img src="assets/puzzle-icon.png" alt="puzzle-icon" width="72px" height="72px" /></div>
+                <p class="gray-text" style="font-size: 20px">03</p>
+                <h1>Tech-Savvy Storytelling</h1>
+                <p class="gray-text">We combine visionary creative with the technical expertise to bring it to life. Your brand's story will be compelling, functional, and built for performance.</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>
+            Ready to kick off a project?
+        </h1>
     </div>
 </body>
 <footer class="footer-container">
