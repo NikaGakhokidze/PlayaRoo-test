@@ -3,7 +3,6 @@ html, body {
     font-family: Roboto, sans-serif;
 }
 
-/* Enforce Roboto across the entire project (including form controls) */
 *, *::before, *::after {
     font-family: "Roboto", sans-serif;
 }
@@ -106,7 +105,7 @@ body {
 }
 
 .aa-container {
-    position: relative; /* keep as requested */
+    position: relative; 
     top: clamp(40px, 7vw, 120px);
     left: clamp(140px, 21vw, 320px);
     width: clamp(80px, 9vw, 140px);
@@ -114,7 +113,7 @@ body {
 }
 
 .full-stack-container {
-    position: relative; /* keep as requested */
+    position: relative; 
     top: clamp(160px, 18vw, 360px);
     left: clamp(16px, 3vw, 80px);
     width: clamp(60px, 7vw, 100px);
@@ -122,7 +121,7 @@ body {
 }
 
 .agencies-container {
-    position: relative; /* keep as requested */
+    position: relative; 
     top: clamp(180px, 21vw, 400px);
     left: clamp(420px, 44vw, 880px);
     width: clamp(90px, 9.5vw, 140px);
@@ -192,6 +191,7 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    position: relative;
 }
 
 .navbar .contact-us-button:hover {
@@ -201,6 +201,8 @@ body {
 .navbar h2 {
     font-weight: 700;
 }
+
+
 
 
 .about-us-container {
@@ -257,13 +259,14 @@ body {
     gap: 12px;
     padding: 6px 6px 6px 24px;
     background-color: #48F597;
-    width: 16%;
+    width: 15%;
     height: 52px;
     border-radius: 100px;
     cursor: pointer;
     font-family: Roboto, sans-serif;
     font-size: 16px;
     border: none;
+    position: relative;
 
 }
 
@@ -304,7 +307,7 @@ body {
     margin-top: 28px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0; /* lines will define separation */
+    gap: 0; 
 
 }
 
@@ -353,6 +356,7 @@ body {
     font-family: Roboto, sans-serif;
     cursor: pointer;
     border: none;
+    position: relative;
 }
 
 .how-we-build-container {
@@ -453,6 +457,7 @@ body {
     font-family: Roboto, sans-serif;
     cursor: pointer;
     border: none;
+    position: relative;
     }
 }
 
@@ -573,3 +578,44 @@ body {
     color: #A6A8AB;
     font-weight: 400;
 }
+
+/* ********** ANIMATIONS and hover effects ********** */
+
+.contact-us-button .btn-arrow,
+.learn-more-button .btn-arrow,
+.get-in-touch-button .btn-arrow,
+.discover-more-button .btn-arrow {
+  transition: transform .4s ease;
+}
+.btn-arrow path { fill: none; }
+.contact-us-button .btn-arrow path,
+.learn-more-button .btn-arrow path,
+.get-in-touch-button .btn-arrow path,
+.discover-more-button .btn-arrow path {
+  transition: stroke .4s ease;
+}
+.contact-us-button .btn-arrow .bg,
+.learn-more-button .btn-arrow .bg,
+.get-in-touch-button .btn-arrow .bg,
+.discover-more-button .btn-arrow .bg {
+  transition: fill .4s ease;
+}
+.contact-us-button:hover .btn-arrow,
+.learn-more-button:hover .btn-arrow,
+.get-in-touch-button:hover .btn-arrow,
+.discover-more-button:hover .btn-arrow {
+  transform: rotate(+45deg);
+}
+.navbar .contact-us-button:hover .btn-arrow .bg { fill: #E0E0E0; }
+.learn-more-button:hover .btn-arrow .bg { fill: #48F597; }
+.discover-more-button:hover .btn-arrow .bg { fill: #48F597; }
+.kick-off-content-container .get-in-touch-button:hover .btn-arrow .bg { fill: #48F597; }
+
+.learn-more-button:hover .btn-arrow path,
+.discover-more-button:hover .btn-arrow path,
+.kick-off-content-container .get-in-touch-button:hover .btn-arrow path {
+  stroke: #090A11;
+}
+
+.navbar .contact-us-button:hover .btn-arrow path { stroke: #090A11; }
+
