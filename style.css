@@ -579,6 +579,10 @@ body {
     font-weight: 400;
 }
 
+.green-text {
+    color: #48F597;
+}
+
 /* ********** ANIMATIONS and hover effects ********** */
 
 .contact-us-button .btn-arrow,
@@ -618,4 +622,106 @@ body {
 }
 
 .navbar .contact-us-button:hover .btn-arrow path { stroke: #090A11; }
+
+
+
+/* Navigation active state */
+.nav-button.active {
+    color: #48F597;
+}
+
+
+/* Contact page styles */
+
+ .about-header-container {
+    background-image: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(7, 27, 23, 0.85) 80%, rgba(0, 0, 0, 0.9) 100%),
+    linear-gradient(to right,
+      rgb(0, 0, 0) 0%,       /* Far left dark (mirrored) */
+      rgb(0, 0, 0) 10%,      /* Far left dark */
+      rgb(0, 0, 0) 12.5%,    /* Column 2 */
+      rgb(72, 245, 151, 0.2) 25%,     /* Column 3 */
+      rgb(72, 245, 151, 0.5) 37.5%,   /* Column 4 */
+      rgb(72, 245, 151, 0.5) 50%,     /* Center bright */
+      rgb(72, 245, 151, 0.5) 62.5%,   /* Column 5 (mirrored) */
+      rgb(72, 245, 151, 0.2) 75%,     /* Column 6 (mirrored) */
+      rgb(0, 0, 0) 87.5%,    /* Column 7 (mirrored) */
+      rgb(0, 0, 0) 90%,      /* Far right dark (mirrored) */
+      rgb(0, 0, 0) 100%      /* Far right dark (mirrored) */
+    ),
+    url('assets/Gradient.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 12px;
+    gap: 224px;
+    height: 88vh;
+    overflow: hidden;
+}
+
+
+.about-header-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+
+
+    .about-header-content-text {
+        p {
+            color: #A6A8AB;
+            font-size: 20px;
+            line-height: 130%;
+            font-weight: 400;
+        }
+    }
+
+    .about-header-title {
+        font-size: 70px;
+        font-weight: 600;
+        line-height: 130%;
+    }
+}
+
+.about-what-we-do-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 40px 70px 40px 70px;
+    gap: 40px;
+
+    .about-what-we-do-text-wrapper {
+
+        p {
+            font-size: 20px;
+            line-height: 140%;
+        }
+    }
+}
+
+/* Responsive design for pages */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .contact-content-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .consultation-visual {
+        align-self: center;
+    }
+}
 
