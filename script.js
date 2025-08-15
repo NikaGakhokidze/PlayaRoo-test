@@ -4,66 +4,142 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabContents = document.querySelectorAll('.tab-content');
     let isTransitioning = false;
     let pendingTimeout = null;
+    let autoTabCycleInterval = null;
+    let userInteracted = false;
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            const targetContent = document.getElementById(this.dataset.tab);
-            if (!targetContent) return;
+    // Function to restart progress bar animation
+    function restartProgressBar(activeTab) {
+        // Remove and re-add the active class to restart the CSS animation
+        activeTab.classList.remove('active');
+        // Force a reflow to ensure the class removal takes effect
+        activeTab.offsetHeight;
+        activeTab.classList.add('active');
+    }
 
-            if (this.classList.contains('active')) return;
+    // Function to switch to a specific tab
+    function switchToTab(tab) {
+        const targetContent = document.getElementById(tab.dataset.tab);
+        if (!targetContent) return;
 
-            if (isTransitioning && pendingTimeout) {
-                clearTimeout(pendingTimeout);
-                tabContents.forEach(content => {
-                    content.classList.remove('active', 'fade-in');
-                });
-            }
+        if (tab.classList.contains('active')) return;
 
-            isTransitioning = true;
+        if (isTransitioning && pendingTimeout) {
+            clearTimeout(pendingTimeout);
+            tabContents.forEach(content => {
+                content.classList.remove('active', 'fade-in');
+            });
+        }
 
-            tabs.forEach(t => t.classList.remove('active'));
+        isTransitioning = true;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        
+        const currentActiveContent = document.querySelector('.tab-content.active');
+        if (currentActiveContent && currentActiveContent !== targetContent) {
+            currentActiveContent.classList.remove('fade-in');
             
-            const currentActiveContent = document.querySelector('.tab-content.active');
-            if (currentActiveContent && currentActiveContent !== targetContent) {
-                currentActiveContent.classList.remove('fade-in');
-                
-                pendingTimeout = setTimeout(() => {
-                    tabContents.forEach(content => {
-                        content.classList.remove('active', 'fade-in');
-                    });
-                    
-                    targetContent.classList.add('active');
-                    
-                    targetContent.offsetHeight;
-                    
-                    targetContent.classList.add('fade-in');
-                    
-                    isTransitioning = false;
-                    pendingTimeout = null;
-                }, 400); 
-            } else {
+            pendingTimeout = setTimeout(() => {
                 tabContents.forEach(content => {
                     content.classList.remove('active', 'fade-in');
                 });
                 
                 targetContent.classList.add('active');
-                pendingTimeout = setTimeout(() => {
-                    targetContent.classList.add('fade-in');
-                    isTransitioning = false;
-                    pendingTimeout = null;
-                }, 10);
-            }
+                
+                targetContent.offsetHeight;
+                
+                targetContent.classList.add('fade-in');
+                
+                isTransitioning = false;
+                pendingTimeout = null;
+            }, 400); 
+        } else {
+            tabContents.forEach(content => {
+                content.classList.remove('active', 'fade-in');
+            });
+            
+            targetContent.classList.add('active');
+            pendingTimeout = setTimeout(() => {
+                targetContent.classList.add('fade-in');
+                isTransitioning = false;
+                pendingTimeout = null;
+            }, 10);
+        }
 
-            this.classList.add('active');
+        tab.classList.add('active');
+        
+        // Restart progress bar animation for the newly active tab
+        setTimeout(() => {
+            restartProgressBar(tab);
+        }, 50);
+    }
+
+    // Function to cycle to the next tab
+    function cycleToNextTab() {
+        if (userInteracted || isTransitioning) return;
+        
+        const currentActiveTab = document.querySelector('.services-our-services-content-item.active');
+        const currentIndex = Array.from(tabs).indexOf(currentActiveTab);
+        const nextIndex = (currentIndex + 1) % tabs.length;
+        const nextTab = tabs[nextIndex];
+        
+        switchToTab(nextTab);
+    }
+
+    // Start auto-cycling tabs every 5 seconds
+    function startAutoTabCycle() {
+        if (autoTabCycleInterval) {
+            clearInterval(autoTabCycleInterval);
+        }
+        autoTabCycleInterval = setInterval(cycleToNextTab, 5000);
+    }
+
+    // Stop auto-cycling when user interacts
+    function stopAutoTabCycle() {
+        if (autoTabCycleInterval) {
+            clearInterval(autoTabCycleInterval);
+            autoTabCycleInterval = null;
+        }
+        userInteracted = true;
+        
+        // Resume auto-cycling after 10 seconds of no interaction
+        setTimeout(() => {
+            userInteracted = false;
+            // Restart progress bar for current active tab when resuming
+            const currentActiveTab = document.querySelector('.services-our-services-content-item.active');
+            if (currentActiveTab) {
+                restartProgressBar(currentActiveTab);
+            }
+            startAutoTabCycle();
+        }, 10000);
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            stopAutoTabCycle(); // Stop auto-cycling when user clicks
+            switchToTab(this);
         });
 
         tab.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
+                stopAutoTabCycle(); // Stop auto-cycling when user uses keyboard
                 this.click();
             }
         });
     });
+
+    // Only start auto-cycling if we're on the services page
+    if (tabs.length > 0) {
+        // Start progress bar for the initially active tab
+        const initialActiveTab = document.querySelector('.services-our-services-content-item.active');
+        if (initialActiveTab) {
+            setTimeout(() => {
+                restartProgressBar(initialActiveTab);
+            }, 100);
+        }
+        
+        startAutoTabCycle();
+    }
 
     const listItems = document.querySelectorAll('.services-our-services-list-item');
 
