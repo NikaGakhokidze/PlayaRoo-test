@@ -884,11 +884,17 @@ body {
 }
 .tab-content {
     display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    width: 70%;
 }
 
 .tab-content.active {
     display: block;
-    width: 70%;
+}
+
+.tab-content.fade-in {
+    opacity: 1;
 }
 
 

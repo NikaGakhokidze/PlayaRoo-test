@@ -2,19 +2,76 @@ document.addEventListener('DOMContentLoaded', function() {
     // Tab Switching Logic
     const tabs = document.querySelectorAll('.services-our-services-content-item');
     const tabContents = document.querySelectorAll('.tab-content');
+    let isTransitioning = false;
+    let pendingTimeout = null;
 
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            // Remove active from all tabs and contents
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-
-            // Add active to clicked tab and corresponding content
-            this.classList.add('active');
+            // Get the target content
             const targetContent = document.getElementById(this.dataset.tab);
-            if (targetContent) {
-                targetContent.classList.add('active');
+            if (!targetContent) return;
+
+            // If this tab is already active, do nothing
+            if (this.classList.contains('active')) return;
+
+            // If a transition is in progress, clear it and reset all states
+            if (isTransitioning && pendingTimeout) {
+                clearTimeout(pendingTimeout);
+                // Immediately hide all content and reset states
+                tabContents.forEach(content => {
+                    content.classList.remove('active', 'fade-in');
+                });
             }
+
+            // Set transition flag
+            isTransitioning = true;
+
+            // Remove active from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Find currently active content and fade it out
+            const currentActiveContent = document.querySelector('.tab-content.active');
+            if (currentActiveContent && currentActiveContent !== targetContent) {
+                // Start fade out by removing fade-in class
+                currentActiveContent.classList.remove('fade-in');
+                
+                // After fade out completes, hide current and show new
+                pendingTimeout = setTimeout(() => {
+                    // Hide all content first to ensure clean state
+                    tabContents.forEach(content => {
+                        content.classList.remove('active', 'fade-in');
+                    });
+                    
+                    // Show and fade in new content
+                    targetContent.classList.add('active');
+                    
+                    // Force reflow to ensure display:block is applied
+                    targetContent.offsetHeight;
+                    
+                    // Start fade in
+                    targetContent.classList.add('fade-in');
+                    
+                    // Clear transition flag
+                    isTransitioning = false;
+                    pendingTimeout = null;
+                }, 400); // Match the CSS transition duration
+            } else {
+                // No current content or same content, just show new content immediately
+                tabContents.forEach(content => {
+                    content.classList.remove('active', 'fade-in');
+                });
+                
+                targetContent.classList.add('active');
+                // Small delay to ensure smooth transition
+                pendingTimeout = setTimeout(() => {
+                    targetContent.classList.add('fade-in');
+                    isTransitioning = false;
+                    pendingTimeout = null;
+                }, 10);
+            }
+
+            // Add active to clicked tab
+            this.classList.add('active');
         });
 
         // Keyboard support for tabs (Enter/Space)
