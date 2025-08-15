@@ -69,10 +69,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     listItems.forEach(item => {
         item.addEventListener('click', function() {
-            this.classList.toggle('expanded');
+            const expandableContent = this.nextElementSibling;
             const isExpanded = this.classList.contains('expanded');
-            this.setAttribute('aria-expanded', isExpanded);
-
+            
+            if (isExpanded) {
+                // Collapse
+                expandableContent.style.maxHeight = '0';
+                expandableContent.style.opacity = '0';
+                expandableContent.style.padding = '0 1rem';
+                this.classList.remove('expanded');
+                this.setAttribute('aria-expanded', 'false');
+            } else {
+                // Expand
+                this.classList.add('expanded');
+                this.setAttribute('aria-expanded', 'true');
+                
+                // Calculate the natural height
+                const scrollHeight = expandableContent.scrollHeight;
+                expandableContent.style.maxHeight = scrollHeight + 'px';
+                expandableContent.style.opacity = '1';
+                expandableContent.style.padding = '1rem';
+            }
         });
 
         item.addEventListener('keydown', function(event) {
