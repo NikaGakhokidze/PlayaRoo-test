@@ -87,3 +87,36 @@ document.addEventListener('click', function(event) {
         dropdownBtn.classList.remove('open');
     }
 });
+
+// Page Transition Effect
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in class to body when page loads
+    document.body.classList.add('fade-in');
+    
+    // Handle navigation links with fade transition
+    const navLinks = document.querySelectorAll('a[href$=".html"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            
+            // Start fade out
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.4s ease-in-out';
+            
+            // Navigate after fade out completes
+            setTimeout(() => {
+                window.location.href = href;
+            }, );
+        });
+    });
+});
+
+// Smooth fade in when coming from another page
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        // Page was loaded from cache (back/forward button)
+        document.body.style.opacity = '1';
+    }
+});

@@ -14,6 +14,26 @@ body {
     color: #F4F4F4;
     background-color: #090A11;
     gap: 72px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.page-transition.fade-in {
+    opacity: 1;
 }
 
 .container {
