@@ -73,22 +73,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const isExpanded = this.classList.contains('expanded');
             
             if (isExpanded) {
-                // Collapse
-                expandableContent.style.maxHeight = '0';
                 expandableContent.style.opacity = '0';
-                expandableContent.style.padding = '0 1rem';
+                
+                    expandableContent.style.maxHeight = '0';
+                    expandableContent.style.padding = '0 1rem';
+                
                 this.classList.remove('expanded');
                 this.setAttribute('aria-expanded', 'false');
             } else {
-                // Expand
                 this.classList.add('expanded');
                 this.setAttribute('aria-expanded', 'true');
                 
-                // Calculate the natural height
                 const scrollHeight = expandableContent.scrollHeight;
                 expandableContent.style.maxHeight = scrollHeight + 'px';
-                expandableContent.style.opacity = '1';
                 expandableContent.style.padding = '1rem';
+                
+                    expandableContent.style.opacity = '1';
             }
         });
 
