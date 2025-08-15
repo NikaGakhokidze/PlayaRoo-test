@@ -468,7 +468,6 @@ body {
     flex-direction: row;
     align-items: center;
     background-color: #48F597;
-    width: 21%;
     height: 52px;
     gap: 12px;
     padding: 6px 6px 6px 24px;
@@ -485,14 +484,18 @@ body {
 
 .consultation-icon {
     position: relative;
-    bottom: 155px;
-    left: 550px;
+    bottom: clamp(80px, 12vw, 155px);
+    left: clamp(200px, 32vw, 550px);
+    width: clamp(120px, 14vw, 200px);
+    height: auto;
 }
 
 .min-call-icon {
     position: relative;
-    bottom: 285px;
-    right: 470px;
+    bottom: clamp(160px, 22vw, 285px);
+    right: clamp(200px, 32vw, 470px);
+    width: clamp(80px, 8vw, 120px);
+    height: auto;
 }
 
 .footer-container {
@@ -767,7 +770,7 @@ body {
 
     .services-header-title {
     width: 85%;
-    font-size: 50px;
+    font-size: clamp(32px, 6vw, 50px);
     font-weight: 400;
     line-height: 250%;
     }
@@ -1264,6 +1267,80 @@ body {
 }
 
 /* Responsive design for pages */
+@media (max-width: 1500px) and (min-width: 1025px) {
+    .about-header-text-wrapper {
+        padding: 40px;
+    }
+    
+    .about-header-title {
+        font-size: clamp(42px, 6vw, 60px);
+    }
+    
+    .about-header-content-text p {
+        font-size: 18px;
+    }
+    
+    .about-us-container {
+        padding: 40px 50px;
+    }
+    
+    .about-us-content-text {
+        font-size: 36px;
+        line-height: 130%;
+    }
+    
+    .about-what-we-do-container {
+        padding: 40px 50px;
+    }
+    
+    .about-what-we-do-text-wrapper p {
+        font-size: 18px;
+        line-height: 135%;
+    }
+    
+    .how-we-build-container {
+        padding: 40px 50px;
+        height: auto;
+    }
+    
+    .how-we-build-header-text {
+        font-size: 36px;
+    }
+    
+    .how-we-build-content-container {
+        gap: 24px;
+    }
+    
+    .how-we-build-content-item {
+        padding: 20px;
+    }
+    
+    .kick-off-container {
+        padding: 70px 50px;
+    }
+    
+    .kick-off-content-container h1 {
+        text-align: center;
+        font-size: 64px;
+        width: 90%;
+    }
+    
+    .kick-off-content-container .get-in-touch-button {
+        width: 25%;
+        gap: 20%;
+        min-width: 200px;
+    }
+    
+    .footer-container {
+        padding: 40px 50px;
+    }
+    
+    .footer-title {
+        font-size: clamp(60px, 12vw, 180px);
+        margin-top: 12%;
+    }
+}
+
 @media (max-width: 1024px) {
     .about-us-container {
         padding: 40px 40px;
@@ -1323,6 +1400,38 @@ body {
     
     .about-what-we-do-container {
         padding: 40px 40px;
+    }
+    
+    .services-header-container {
+        padding: 60px 40px;
+        height: auto;
+        min-height: 60vh;
+    }
+    
+    .services-header-title {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .services-our-services-container {
+        padding: 40px 40px;
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .tab-content {
+        width: 100%;
+    }
+    
+    .contact-header-container {
+        height: auto;
+        min-height: 60vh;
+        padding-bottom: 40px;
+    }
+    
+    .contact-form-container {
+        width: 80%;
+        padding: 40px;
     }
 }
 
@@ -1390,8 +1499,8 @@ body {
     }
     
     .kick-off-content-container .get-in-touch-button {
-        width: 100%;
-        justify-content: center;
+        width: 90%;
+        justify-content: space-between;
     }
     
     .footer-container {
@@ -1435,6 +1544,78 @@ body {
     .about-what-we-do-text-wrapper p {
         font-size: 16px;
         margin-bottom: 20px;
+    }
+    
+    /* Services Page Mobile Styles */
+    .services-header-container {
+        padding: 40px 20px;
+        gap: 80px;
+    }
+    
+    .services-header-title {
+        font-size: clamp(24px, 6vw, 40px);
+        line-height: 130%;
+        text-align: center;
+    }
+    
+    .services-our-services-container {
+        padding: 32px 20px;
+        flex-direction: column;
+    }
+    
+    .services-our-services-content-container {
+        margin-bottom: 32px;
+    }
+    
+    .services-our-services-content-item h2 {
+        font-size: 20px;
+    }
+    
+    .services-our-services-list h1 {
+        font-size: 32px;
+    }
+    
+    .services-our-services-list p {
+        font-size: 16px;
+    }
+    
+    .services-our-services-list-item h1 {
+        font-size: 20px;
+    }
+    
+    .services-our-services-list-item p {
+        font-size: 14px;
+    }
+    
+    /* Contact Page Mobile Styles */
+    .contact-header-container {
+        padding: 40px 20px;
+    }
+    
+    .contact-form-container {
+        width: 100%;
+        padding: 32px 20px;
+        border-radius: 12px;
+    }
+    
+    .contact-form-container input {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+    
+    .send-message-button {
+        font-size: 16px;
+        padding: 16px 24px;
+        height: 56px;
+    }
+    
+    .phone-input-container {
+        padding: 12px 0;
+    }
+    
+    .country-dropdown-menu {
+        width: 100%;
+        max-width: 280px;
     }
     
     .page-header h1 {
@@ -1505,6 +1686,69 @@ body {
     
     .about-what-we-do-container {
         padding: 24px 16px;
+    }
+    
+    /* Services Page Small Mobile Styles */
+    .services-header-container {
+        padding: 32px 16px;
+        gap: 60px;
+    }
+    
+    .services-header-title {
+        font-size: clamp(20px, 5vw, 32px);
+    }
+    
+    .services-our-services-container {
+        padding: 24px 16px;
+    }
+    
+    .services-our-services-content-item h2 {
+        font-size: 18px;
+    }
+    
+    .services-our-services-list h1 {
+        font-size: 28px;
+    }
+    
+    .services-our-services-list p {
+        font-size: 14px;
+    }
+    
+    .services-our-services-list-item h1 {
+        font-size: 18px;
+    }
+    
+    .services-our-services-list-item p {
+        font-size: 12px;
+    }
+    
+    /* Contact Page Small Mobile Styles */
+    .contact-header-container {
+        padding: 32px 16px;
+    }
+    
+    .contact-form-container {
+        padding: 24px 16px;
+        border-radius: 8px;
+    }
+    
+    .contact-form-container input {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    
+    .send-message-button {
+        font-size: 14px;
+        padding: 14px 20px;
+        height: 52px;
+    }
+    
+    .phone-input-container {
+        padding: 10px 0;
+    }
+    
+    .country-dropdown-menu {
+        width: calc(100vw - 40px);
     }
 }
 
