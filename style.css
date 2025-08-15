@@ -779,11 +779,17 @@ body {
                 font-size: 28px;
                 line-height: 100%;
             }
+
+            &.active {
+                h2 {
+                    color: #F4F4F4;
+                }
+            }
         }
     }
 
     .services-our-services-list {
-        width: 70%;
+        width: 100%;
         gap: 48px;
         display: flex;
         flex-direction: column;
@@ -843,6 +849,27 @@ body {
 
 .services-our-services-list-item.expanded + .expandable-content {
     display: block; 
+}
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    width: 70%;
+}
+
+
+
+.contact-header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 12px;
+    gap: 224px;
+    overflow: hidden;
 }
 
 /* Responsive design for pages */
