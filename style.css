@@ -788,6 +788,13 @@ body {
         display: flex;
         flex-direction: column;
 
+        .services-our-services-list-item-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+
 
         .services-our-services-list-item {
             display: flex;
@@ -809,10 +816,9 @@ body {
                 line-height: 100%;
             }
         }
-
-
-
-
+        .services-our-services-list-item.expanded {
+            border-bottom: none;
+        }
 
         h1 {
             font-size: 56px;
@@ -823,6 +829,20 @@ body {
             font-size: 20px;
         }
     }
+}
+
+.expandable-content {
+    display: none; 
+    padding: 1rem; 
+    border-bottom: 2px solid #383940;
+}
+
+.services-our-services-list-item.expanded .arrow-icon {
+    transform: rotate(260deg); 
+}
+
+.services-our-services-list-item.expanded + .expandable-content {
+    display: block; 
 }
 
 /* Responsive design for pages */
