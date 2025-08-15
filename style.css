@@ -272,10 +272,6 @@ body {
     margin: 0
 }
 
-.line-height {
-    line-height: 130%;
-}
-
 
 
 .learn-more-button {
@@ -691,7 +687,6 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding-top: 12px;
-    gap: 224px;
     height: 88vh;
     overflow: hidden;
 }
@@ -715,9 +710,9 @@ body {
     }
 
     .about-header-title {
-        font-size: 70px;
+        font-size: clamp(36px, 8vw, 70px);
         font-weight: 600;
-        line-height: 130%;
+        text-align: center;
     }
 }
 
@@ -1103,8 +1098,345 @@ body {
     transform: rotate(180deg);
 }
 
+/* Mobile Menu Styles */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    gap: 4px;
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background-color: #F4F4F4;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1A1B23 0%, #090A11 100%);
+    z-index: 9999;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-sidebar.open {
+    right: 0;
+}
+
+.mobile-sidebar-content {
+    padding: 32px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #383940;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+    background-color: #383940;
+}
+
+.mobile-nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-nav-item {
+    display: flex;
+    align-items: center;
+    padding: 32px 0;
+    text-decoration: none;
+    color: #F4F4F4;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid #383940;
+}
+
+.mobile-nav-item:hover {
+    color: #48F597;
+}
+
+.mobile-nav-item.active {
+    color: #48F597;
+}
+
+.mobile-nav-text {
+    line-height: 1.2;
+}
+
+.mobile-contact-section {
+    margin-top: auto;
+    padding-top: 32px;
+}
+
+.mobile-contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 24px;
+    background-color: #48F597;
+    color: #090A11;
+    text-decoration: none;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-contact-button:hover {
+    background-color: #40E085;
+}
+
+.mobile-contact-arrow {
+    transition: transform 0.3s ease;
+}
+
+.mobile-contact-button:hover .mobile-contact-arrow {
+    transform: rotate(45deg);
+}
+
+.mobile-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Responsive design for pages */
+@media (max-width: 1024px) {
+    .about-us-container {
+        padding: 40px 40px;
+        flex-direction: column;
+        gap: 32px;
+        height: auto;
+    }
+    
+    .about-us-content {
+        width: 100%;
+    }
+    
+    .about-us-content-text {
+        font-size: 36px;
+    }
+    
+    .our-services-container {
+        padding: 40px 40px;
+    }
+    
+    .how-we-build-container {
+        padding: 40px 40px;
+        height: auto;
+    }
+    
+    .how-we-build-content-container {
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .how-we-build-content-item {
+        width: 100%;
+    }
+    
+    .kick-off-container {
+        padding: 60px 40px;
+        height: auto;
+    }
+    
+    .kick-off-content-container h1 {
+        font-size: 60px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .consultation-icon {
+        display: none;
+    }
+    
+    .min-call-icon {
+        display: none;
+    }
+    
+    .footer-container {
+        padding: 40px 40px;
+    }
+    
+    .about-what-we-do-container {
+        padding: 40px 40px;
+    }
+}
+
 @media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .about-header-container {
+        gap: 120px;
+        height: auto;
+        min-height: 60vh;
+        padding-bottom: 40px;
+    }
+    
+    .about-header-text-wrapper {
+        padding: 20px;
+        text-align: center;
+    }
+    
+
+    
+    .about-header-content-text p {
+        font-size: 18px;
+    }
+    
+    .about-us-container {
+        padding: 32px 20px;
+        gap: 24px;
+    }
+    
+    .about-us-content-text {
+        font-size: 24px;
+        line-height: 140%;
+    }
+    
+    .our-services-container {
+        padding: 32px 20px;
+    }
+    
+    .how-we-build-container {
+        padding: 32px 20px;
+        gap: 32px;
+    }
+    
+    .how-we-build-header-text {
+        font-size: 32px;
+    }
+    
+    .how-we-build-content-item {
+        padding: 20px 0;
+    }
+    
+    .kick-off-container {
+        padding: 40px 20px;
+    }
+    
+    .kick-off-content-container h1 {
+        font-size: 40px;
+        line-height: 120%;
+    }
+    
+    .kick-off-content-container .get-in-touch-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .footer-container {
+        padding: 32px 20px;
+    }
+    
+    .footer-title {
+        font-size: clamp(36px, 8vw, 80px);
+        margin-top: 8%;
+        text-align: center;
+    }
+    
+    .footer-side-label {
+        display: none;
+    }
+    
+    .footer-contact {
+        flex-direction: column;
+        gap: 32px;
+        text-align: center;
+    }
+    
+    .footer-contact-info {
+        justify-content: center;
+    }
+    
+    .social-media-container {
+        justify-content: center;
+    }
+    
+    .footer-copyright {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .about-what-we-do-container {
+        padding: 32px 20px;
+    }
+    
+    .about-what-we-do-text-wrapper p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
     .page-header h1 {
         font-size: 2.5rem;
     }
@@ -1120,6 +1452,59 @@ body {
     
     .consultation-visual {
         align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 20px 16px 0 16px;
+    }
+    
+    .navbar img {
+        width: 150px;
+        height: auto;
+    }
+    
+    .about-header-text-wrapper {
+        padding: 16px;
+    }
+    
+
+    
+    .about-us-container {
+        padding: 24px 16px;
+    }
+    
+    .about-us-content-text {
+        font-size: 20px;
+    }
+    
+    .our-services-container {
+        padding: 24px 16px;
+    }
+    
+    .how-we-build-container {
+        padding: 24px 16px;
+    }
+    
+    .how-we-build-header-text {
+        font-size: 28px;
+    }
+    
+    .kick-off-container {
+        padding: 32px 16px;
+    }
+    
+    .kick-off-content-container h1 {
+        font-size: 32px;
+    }
+    
+    .footer-container {
+        padding: 24px 16px;
+    }
+    
+    .about-what-we-do-container {
+        padding: 24px 16px;
     }
 }
 

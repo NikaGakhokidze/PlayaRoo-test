@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 window.location.href = href;
-            }, );
+            }, 400);
         });
     });
 });
@@ -135,5 +135,83 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
         document.body.style.opacity = '1';
+    }
+});
+
+// Mobile Menu Toggle Functionality
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('mobile-sidebar');
+    const overlay = document.getElementById('mobile-sidebar-overlay');
+    const toggleButton = document.querySelector('.mobile-menu-toggle');
+    
+    if (sidebar && overlay && toggleButton) {
+        const isOpen = sidebar.classList.contains('open');
+        
+        if (isOpen) {
+            // Close menu
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            toggleButton.classList.remove('active');
+            document.body.style.overflow = '';
+        } else {
+            // Open menu
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+            toggleButton.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+}
+
+// Close mobile menu when clicking on navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-item, .mobile-contact-button');
+    
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Close the mobile menu
+            const sidebar = document.getElementById('mobile-sidebar');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            const toggleButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (sidebar && overlay && toggleButton) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggleButton.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+});
+
+// Handle escape key to close mobile menu
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+        const toggleButton = document.querySelector('.mobile-menu-toggle');
+        
+        if (sidebar && sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            toggleButton.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Handle window resize to close mobile menu on larger screens
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+        const toggleButton = document.querySelector('.mobile-menu-toggle');
+        
+        if (sidebar && sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            toggleButton.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 });
