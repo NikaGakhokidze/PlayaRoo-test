@@ -56,3 +56,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Country Code Dropdown Functionality
+function toggleCountryDropdown() {
+    const dropdown = document.getElementById('country-dropdown');
+    const dropdownBtn = document.querySelector('.country-code-dropdown');
+    
+    dropdown.classList.toggle('show');
+    dropdownBtn.classList.toggle('open');
+}
+
+function selectCountry(flag, code, name) {
+    document.getElementById('selected-flag').textContent = flag;
+    document.getElementById('selected-code').textContent = code;
+    
+    // Close dropdown
+    const dropdown = document.getElementById('country-dropdown');
+    const dropdownBtn = document.querySelector('.country-code-dropdown');
+    dropdown.classList.remove('show');
+    dropdownBtn.classList.remove('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('country-dropdown');
+    const dropdownBtn = document.querySelector('.country-code-dropdown');
+    
+    if (dropdown && dropdownBtn && !dropdownBtn.contains(event.target)) {
+        dropdown.classList.remove('show');
+        dropdownBtn.classList.remove('open');
+    }
+});

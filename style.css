@@ -7,6 +7,8 @@ html, body {
     font-family: "Roboto", sans-serif;
 }
 
+
+
 body {
     margin: 0;
     color: #F4F4F4;
@@ -196,6 +198,10 @@ body {
 
 .navbar .contact-us-button:hover {
     background-color: #E0E0E0;
+}
+
+.navbar a {
+    text-decoration: none;
 }
 
 .navbar h2 {
@@ -588,36 +594,42 @@ body {
 .contact-us-button .btn-arrow,
 .learn-more-button .btn-arrow,
 .get-in-touch-button .btn-arrow,
-.discover-more-button .btn-arrow {
+.discover-more-button .btn-arrow,
+.send-message-button .btn-arrow {
   transition: transform .4s ease;
 }
 .btn-arrow path { fill: none; }
 .contact-us-button .btn-arrow path,
 .learn-more-button .btn-arrow path,
 .get-in-touch-button .btn-arrow path,
-.discover-more-button .btn-arrow path {
+.discover-more-button .btn-arrow path,
+.send-message-button .btn-arrow path {
   transition: stroke .4s ease;
 }
 .contact-us-button .btn-arrow .bg,
 .learn-more-button .btn-arrow .bg,
 .get-in-touch-button .btn-arrow .bg,
-.discover-more-button .btn-arrow .bg {
+.discover-more-button .btn-arrow .bg,
+.send-message-button .btn-arrow .bg {
   transition: fill .4s ease;
 }
 .contact-us-button:hover .btn-arrow,
 .learn-more-button:hover .btn-arrow,
 .get-in-touch-button:hover .btn-arrow,
-.discover-more-button:hover .btn-arrow {
+.discover-more-button:hover .btn-arrow,
+.send-message-button:hover .btn-arrow {
   transform: rotate(+45deg);
 }
 .navbar .contact-us-button:hover .btn-arrow .bg { fill: #E0E0E0; }
 .learn-more-button:hover .btn-arrow .bg { fill: #48F597; }
 .discover-more-button:hover .btn-arrow .bg { fill: #48F597; }
 .kick-off-content-container .get-in-touch-button:hover .btn-arrow .bg { fill: #48F597; }
+.send-message-button:hover .btn-arrow .bg { fill: #48F597; }
 
 .learn-more-button:hover .btn-arrow path,
 .discover-more-button:hover .btn-arrow path,
-.kick-off-content-container .get-in-touch-button:hover .btn-arrow path {
+.kick-off-content-container .get-in-touch-button:hover .btn-arrow path,
+.send-message-button:hover .btn-arrow path {
   stroke: #090A11;
 }
 
@@ -860,7 +872,14 @@ body {
 }
 
 
-
+.contact-container {
+    background-image: 
+        linear-gradient(to bottom, rgba(9, 10, 17, 0.25) 0%, rgba(9, 10, 17, 1) 100%),
+        url('assets/contact-us-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .contact-header-container {
     width: 100%;
     display: flex;
@@ -870,6 +889,185 @@ body {
     padding-top: 12px;
     gap: 224px;
     overflow: hidden;
+}
+
+.contact-form-container {
+    background-color: #090A11;
+    width: 50%;
+    border: 1px solid #383940;
+    border-radius: 16px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    box-sizing: border-box;
+}
+
+.contact-form-container input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #383940;
+    color: #F4F4F4;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    padding: 16px 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form-container input::placeholder {
+    color: #F4F4F4;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.contact-form-container input:focus {
+    border-bottom-color: #48F597;
+}
+
+.send-message-button {
+    background-color: #48F597;
+    border: none;
+    border-radius: 100px;
+    color: #090A11;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    padding: 16px 32px 16px 40px;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 16px;
+}
+
+
+
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #383940;
+    padding: 16px 0;
+    gap: 16px;
+}
+
+.country-code-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding-right: 16px;
+    border-right: 1px solid #383940;
+}
+
+.country-code-dropdown .flag {
+    font-size: 18px;
+}
+
+.country-code-dropdown .country-code {
+    color: #F4F4F4;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.country-code-dropdown .dropdown-arrow {
+    margin-left: 4px;
+}
+
+.phone-input-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #F4F4F4;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    outline: none;
+    padding: 0;
+}
+
+.phone-input-container input::placeholder {
+    color: #F4F4F4;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.contact-form-container .phone-input-container:focus-within {
+    border-bottom-color: #48F597;
+}
+
+.country-code-dropdown {
+    position: relative;
+}
+
+.country-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 280px;
+    background-color: #1A1B23;
+    border: 1px solid #383940;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    margin-top: 8px;
+}
+
+.country-dropdown-menu.show {
+    display: block;
+}
+
+.country-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    gap: 12px;
+}
+
+.country-option:hover {
+    background-color: #2A2B33;
+}
+
+.country-option .flag {
+    font-size: 16px;
+    width: 20px;
+}
+
+.country-option .country-name {
+    flex: 1;
+    color: #F4F4F4;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.country-option .country-code {
+    color: #A6A8AB;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+.dropdown-arrow {
+    transition: transform 0.2s ease;
+}
+
+.country-code-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
 }
 
 /* Responsive design for pages */

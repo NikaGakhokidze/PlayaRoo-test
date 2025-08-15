@@ -15,7 +15,7 @@
         <a href="index.html"><img src="assets/Logo.png" alt="logo" width="211px" height="48px" /></a>
         <div class="navbar-menu">
             <a href="index.html"><button class="nav-button">Home</button></a>
-            <a href="about.html"><button class="nav-button active">About us</button></a>
+            <a href="about.html"><button class="nav-button">About us</button></a>
             <a href="services.html"><button class="nav-button">Services</button></a>
             <a href="contact.html"><button class="contact-us-button">Contact us 
                 <svg class="btn-arrow" width="40" height="40" viewBox="0 0 45 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -36,11 +36,83 @@
     <div class="about-header-content-text">
         <p>Have questions or need help? We're here for you</p>
     </div>
-    <div>
-        <h1>second div</h1>
+    <div class="contact-form-container">
+        <input type="text" placeholder="Full Name" />
+        <div class="phone-input-container">
+            <div class="country-code-dropdown" onclick="toggleCountryDropdown()">
+                <span class="flag" id="selected-flag">🇮🇹</span>
+                <span class="country-code" id="selected-code">+39</span>
+                <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L6 6L11 1" stroke="#F4F4F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="country-dropdown-menu" id="country-dropdown">
+                    <div class="country-option" onclick="selectCountry('🇺🇸', '+1', 'United States')">
+                        <span class="flag">🇺🇸</span>
+                        <span class="country-name">United States</span>
+                        <span class="country-code">+1</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇬🇧', '+44', 'United Kingdom')">
+                        <span class="flag">🇬🇧</span>
+                        <span class="country-name">United Kingdom</span>
+                        <span class="country-code">+44</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇮🇹', '+39', 'Italy')">
+                        <span class="flag">🇮🇹</span>
+                        <span class="country-name">Italy</span>
+                        <span class="country-code">+39</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇫🇷', '+33', 'France')">
+                        <span class="flag">🇫🇷</span>
+                        <span class="country-name">France</span>
+                        <span class="country-code">+33</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇩🇪', '+49', 'Germany')">
+                        <span class="flag">🇩🇪</span>
+                        <span class="country-name">Germany</span>
+                        <span class="country-code">+49</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇪🇸', '+34', 'Spain')">
+                        <span class="flag">🇪🇸</span>
+                        <span class="country-name">Spain</span>
+                        <span class="country-code">+34</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇨🇦', '+1', 'Canada')">
+                        <span class="flag">🇨🇦</span>
+                        <span class="country-name">Canada</span>
+                        <span class="country-code">+1</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇦🇺', '+61', 'Australia')">
+                        <span class="flag">🇦🇺</span>
+                        <span class="country-name">Australia</span>
+                        <span class="country-code">+61</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇯🇵', '+81', 'Japan')">
+                        <span class="flag">🇯🇵</span>
+                        <span class="country-name">Japan</span>
+                        <span class="country-code">+81</span>
+                    </div>
+                    <div class="country-option" onclick="selectCountry('🇧🇷', '+55', 'Brazil')">
+                        <span class="flag">🇧🇷</span>
+                        <span class="country-name">Brazil</span>
+                        <span class="country-code">+55</span>
+                    </div>
+                </div>
+            </div>
+            <input type="tel" placeholder="Phone Number" />
+        </div>
+        <input type="text" placeholder="Subject of interest" />
+        <input type="text" placeholder="How may we assist you?" />
+        <input type="email" placeholder="Email Address" />
+        <button class="send-message-button">Send your Message
+            <svg class="btn-arrow" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect class="bg" width="40" height="40" rx="20" fill="#090A11"/>
+                <path d="M12 28L28 12M28 12L17.3333 12M28 12V22.6667" stroke="#48F597" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
     </div>
     </div>
 </body>
+</div>
 
 <section class="footer-container">
     <div>
@@ -104,6 +176,6 @@
         </div>
     </div>
   </section>
-</div>
+<script src="script.js"></script>
 </body>
 </html>
