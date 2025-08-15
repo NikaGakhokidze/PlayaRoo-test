@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     font-family: Roboto, sans-serif;
+    overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -1338,6 +1339,72 @@ body {
     .footer-title {
         font-size: clamp(60px, 12vw, 180px);
         margin-top: 12%;
+    }
+    
+    /* Services page specific adjustments for medium screens */
+    .services-header-container {
+        padding: 40px 15px;
+        gap: 100px;
+        height: auto;
+        min-height: 70vh;
+    }
+    
+    .services-header-title {
+        width: 90%;
+        font-size: clamp(36px, 5vw, 45px);
+        line-height: 140%;
+    }
+    
+    .services-our-services-container {
+        padding: 40px 50px;
+        gap: 32px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .services-our-services-content-item h2 {
+        font-size: 24px;
+        line-height: 110%;
+    }
+    
+    .tab-content {
+        width: 75%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .services-our-services-list h1 {
+        font-size: 42px;
+        line-height: 110%;
+    }
+    
+    .services-our-services-list p {
+        font-size: 18px;
+        line-height: 135%;
+    }
+    
+    .services-our-services-list-item {
+        padding: 20px 24px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .services-our-services-list-item h1 {
+        font-size: 24px;
+        line-height: 110%;
+    }
+    
+    .services-our-services-list-item p {
+        font-size: 18px;
+    }
+    
+    .expandable-content {
+        padding: 0.8rem;
+    }
+    
+    .expandable-content p {
+        font-size: 15px;
+        line-height: 135%;
     }
 }
 
