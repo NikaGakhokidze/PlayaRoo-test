@@ -80,7 +80,6 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding-top: 12px;
-    gap: 64px;
     height: 88vh;
     overflow: hidden;
 }
@@ -145,23 +144,112 @@ body {
 
 .agencies-container {
     position: relative; 
-    top: clamp(180px, 21vw, 400px);
-    left: clamp(420px, 44vw, 880px);
+    top: clamp(180px, 22vw, 400px);
+    left: clamp(420px, 41vw, 880px);
     width: clamp(90px, 9.5vw, 140px);
     height: auto;
 }
 
 @media (max-width: 1024px) {
-    .header-content h1 { font-size: clamp(140px, 16vw, 260px); }
-    .header-content-text .p-container { width: 60%; }
+    .header-container {
+        gap: 48px;
+        height: 85vh;
+    }
+    
+    .header-content h1 { 
+        font-size: clamp(140px, 16vw, 260px); 
+    }
+    
+    .header-content-text {
+        width: 85%;
+    }
+    
+    .header-content-text .p-container { 
+        width: 65%; 
+    }
+    
+    .header-content-text .p-container p {
+        font-size: 28px;
+        line-height: 130%;
+    }
+    
+    .header-content-text .mouse-container {
+        width: 64px;
+        height: 64px;
+    }
+    .full-stack-container {
+        left: -10px;
+        top: clamp(140px, 12vw, 200px);
+    }
+
+    .agencies-container { 
+        left: clamp(220px, 35vw, 420px); 
+        top: clamp(120px, 22.8vw, 280px); 
+    }
 }
 
 @media (max-width: 768px) {
-    .header-container { height: 82vh; }
-    .header-content h1 { font-size: clamp(96px, 18vw, 200px); }
-    .header-content-text { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .header-content-text .p-container { width: 100%; }
-    .agencies-container { left: clamp(280px, 44vw, 520px); top: clamp(160px, 26vw, 320px); }
+    .header-container { 
+        height: 80vh; 
+        gap: 32px;
+        padding-top: 16px;
+    }
+    
+    .header-content {
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .header-content h1 { 
+        font-size: clamp(80px, 15vw, 160px); 
+        line-height: 100%;
+    }
+    
+    .header-content-text { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 24px; 
+        width: 100%;
+        text-align: center;
+    }
+    
+    .header-content-text .p-container { 
+        width: 100%; 
+        text-align: center;
+    }
+    
+    .header-content-text .p-container p {
+        font-size: 20px;
+        line-height: 140%;
+        margin: 0;
+    }
+    
+    .header-content-text .mouse-container {
+        width: 56px;
+        height: 56px;
+        display: none;
+    }
+    
+    .header-content-text .mouse-container img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .agencies-container { 
+        left: clamp(220px, 35vw, 420px); 
+        top: clamp(120px, 20vw, 280px); 
+        display: none;
+    }
+    
+    .aa-container {
+        left: clamp(80px, 15vw, 200px);
+        top: clamp(30px, 5vw, 80px);
+    }
+    
+    .full-stack-container {
+        left: -185px;
+        top: clamp(120px, 12vw, 200px);
+    }
 }
 
 .navbar {
@@ -234,7 +322,6 @@ body {
 
 .about-us-container {
     padding: 40px 70px;
-    height: 500px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -267,6 +354,7 @@ body {
     gap: 48px;
     width: 70%;
 }
+
 .about-us-content-text {
     font-size: 48px;
     font-weight: 400;
@@ -282,7 +370,7 @@ body {
     gap: 12px;
     padding: 6px 6px 6px 24px;
     background-color: #48F597;
-    width: 15%;
+    width: 11rem;
     height: 52px;
     border-radius: 100px;
     cursor: pointer;
@@ -313,6 +401,12 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.our-services-content-text-container {
+    width: 70%;
 }
 
 .our-services-content-text {
@@ -368,7 +462,7 @@ body {
     flex-direction: row;
     align-items: center;
     background-color: #48F597;
-    width: 12%;
+    width: 12rem;
     height: 52px;
     gap: 12px;
     padding: 6px 6px 6px 24px;
@@ -394,6 +488,15 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.how-we-build-header-text-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .how-we-build-header-text {
@@ -809,6 +912,11 @@ body {
 .services-our-services-container .services-our-services-content-container .services-our-services-content-item.active::after {
     width: 0%;
     animation: progressBar 5s linear infinite;
+}
+
+/* Pause the tab progress bar when user has interacted */
+.services-our-services-container .services-our-services-content-container .services-our-services-content-item.paused::after {
+    animation-play-state: paused;
 }
 
 @keyframes progressBar {
@@ -1436,10 +1544,13 @@ body {
         flex-direction: column;
         gap: 32px;
         height: auto;
+        align-items: center;
     }
     
     .about-us-content {
         width: 100%;
+        align-items: center;
+        text-align: center;
     }
     
     .about-us-content-text {
@@ -1448,6 +1559,48 @@ body {
     
     .our-services-container {
         padding: 40px 40px;
+    }
+    
+    .our-services-title-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        justify-content: center;
+    }
+    
+    .our-services-content-text-container {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .our-services-content-text {
+        font-size: 36px;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .service-grid .card:nth-child(odd) {
+        border-right: none;
+    }
+    
+    .service-grid .card:nth-child(-n+4) {
+        border-bottom: 1px solid #383940;
+    }
+    
+    .service-grid .card:last-child {
+        border-bottom: none;
+    }
+    
+    .service-grid-text-wrapper {
+        width: 70%;
+    }
+    
+    .discover-more-button {
+        width: 20%;
+        min-width: 180px;
     }
     
     .how-we-build-container {
@@ -1611,6 +1764,75 @@ body {
         padding: 32px 20px;
     }
     
+    .our-services-title-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .our-services-content-text-container {
+        width: 100%;
+    }
+    
+    .our-services-content-text {
+        font-size: 28px;
+        line-height: 140%;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 32px;
+    }
+    
+    .service-grid .card {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 20px;
+    }
+    
+    .service-grid .card:nth-child(odd) {
+        border-right: none;
+    }
+    
+    .service-grid .card:nth-child(-n+4) {
+        border-bottom: 1px solid #383940;
+    }
+    
+    .service-grid .card:last-child {
+        border-bottom: none;
+    }
+    
+    .service-grid .card .num img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .service-grid-text-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .service-grid-text-wrapper h3 {
+        font-size: 24px;
+        margin: 0;
+    }
+    
+    .service-grid-text-wrapper p {
+        font-size: 16px;
+        line-height: 150%;
+    }
+    
+    .discover-more-button {
+        width: 40%;
+        min-width: 200px;
+        justify-content: space-between;
+    }
+    
     .how-we-build-container {
         padding: 32px 20px;
         gap: 32px;
@@ -1618,6 +1840,7 @@ body {
     
     .how-we-build-header-text {
         font-size: 32px;
+        text-align: center;
     }
     
     .how-we-build-content-item {
@@ -1783,6 +2006,61 @@ body {
         height: auto;
     }
     
+    .header-container {
+        height: 75vh;
+        gap: 24px;
+        padding-top: 20px;
+    }
+    
+    .header-content {
+        padding: 0 16px;
+        text-align: center;
+    }
+    
+    .header-content h1 {
+        font-size: clamp(60px, 12vw, 120px);
+        line-height: 95%;
+        margin: 0;
+    }
+    
+    .header-content-text {
+        width: 100%;
+        gap: 20px;
+    }
+    
+    .header-content-text .p-container p {
+        font-size: 18px;
+        line-height: 140%;
+    }
+    
+    .header-content-text .mouse-container {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .header-content-text .mouse-container img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .agencies-container {
+        left: clamp(180px, 30vw, 300px);
+        top: clamp(80px, 15vw, 200px);
+        width: clamp(60px, 8vw, 100px);
+    }
+    
+    .aa-container {
+        left: clamp(50px, 10vw, 150px);
+        top: clamp(20px, 4vw, 60px);
+        width: clamp(50px, 7vw, 90px);
+    }
+    
+    .full-stack-container {
+        left: clamp(5px, 1vw, 30px);
+        top: clamp(70px, 10vw, 160px);
+        width: clamp(40px, 6vw, 80px);
+    }
+    
     .about-header-text-wrapper {
         padding: 16px;
     }
@@ -1791,6 +2069,11 @@ body {
     
     .about-us-container {
         padding: 24px 16px;
+    }
+
+    .about-us-text-container {
+        width: 80%;
+        text-align: center;
     }
     
     .about-us-content-text {
@@ -1801,12 +2084,82 @@ body {
         padding: 24px 16px;
     }
     
+    .our-services-title-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+    }
+    
+    .our-services-content-text-container {
+        width: 100%;
+    }
+    
+    .our-services-content-text {
+        font-size: 24px;
+        line-height: 140%;
+    }
+    
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 24px;
+    }
+    
+    .service-grid .card {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 16px;
+        gap: 16px;
+    }
+    
+    .service-grid .card:nth-child(odd) {
+        border-right: none;
+    }
+    
+    .service-grid .card:nth-child(-n+4) {
+        border-bottom: 1px solid #383940;
+    }
+    
+    .service-grid .card:last-child {
+        border-bottom: none;
+    }
+    
+    .service-grid .card .num img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .service-grid-text-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .service-grid-text-wrapper h3 {
+        font-size: 20px;
+        margin: 0;
+    }
+    
+    .service-grid-text-wrapper p {
+        font-size: 14px;
+        line-height: 150%;
+    }
+    
+    .discover-more-button {
+        width: 70%;
+        min-width: 160px;
+        justify-content: space-between;
+    }
+    
     .how-we-build-container {
         padding: 24px 16px;
     }
     
     .how-we-build-header-text {
         font-size: 28px;
+        text-align: center;
     }
     
     .kick-off-container {

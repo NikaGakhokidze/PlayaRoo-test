@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Tab Switching Logic
     const tabs = document.querySelectorAll('.services-our-services-content-item');
     const tabContents = document.querySelectorAll('.tab-content');
     let isTransitioning = false;
@@ -7,20 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let autoTabCycleInterval = null;
     let userInteracted = false;
 
-    // Function to restart progress bar animation
     function restartProgressBar(activeTab) {
-        // Remove and re-add the active class to restart the CSS animation
         activeTab.classList.remove('active');
-        // Force a reflow to ensure the class removal takes effect
         activeTab.offsetHeight;
         activeTab.classList.add('active');
     }
 
-    // Function to switch to a specific tab
     function switchToTab(tab) {
         const targetContent = document.getElementById(tab.dataset.tab);
         if (!targetContent) return;
-
+        
         if (tab.classList.contains('active')) return;
 
         if (isTransitioning && pendingTimeout) {
@@ -32,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         isTransitioning = true;
 
-        tabs.forEach(t => t.classList.remove('active'));
+        tabs.forEach(t => {
+            t.classList.remove('active');
+            t.classList.remove('paused');
+        });
         
         const currentActiveContent = document.querySelector('.tab-content.active');
         if (currentActiveContent && currentActiveContent !== targetContent) {
@@ -67,13 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         tab.classList.add('active');
         
-        // Restart progress bar animation for the newly active tab
-        setTimeout(() => {
-            restartProgressBar(tab);
-        }, 50);
+        if (userInteracted) {
+            tab.classList.add('paused');
+        } else {
+            setTimeout(() => {
+                restartProgressBar(tab);
+            }, 50);
+        }
     }
 
-    // Function to cycle to the next tab
     function cycleToNextTab() {
         if (userInteracted || isTransitioning) return;
         
@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
         switchToTab(nextTab);
     }
 
-    // Start auto-cycling tabs every 5 seconds
     function startAutoTabCycle() {
         if (autoTabCycleInterval) {
             clearInterval(autoTabCycleInterval);
@@ -93,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         autoTabCycleInterval = setInterval(cycleToNextTab, 5000);
     }
 
-    // Stop auto-cycling when user interacts
     function stopAutoTabCycle() {
         if (autoTabCycleInterval) {
             clearInterval(autoTabCycleInterval);
@@ -101,12 +99,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         userInteracted = true;
         
-        // Resume auto-cycling after 10 seconds of no interaction
+        const activeTabWhenStopped = document.querySelector('.services-our-services-content-item.active');
+        if (activeTabWhenStopped) {
+            activeTabWhenStopped.classList.add('paused');
+        }
+        
         setTimeout(() => {
             userInteracted = false;
-            // Restart progress bar for current active tab when resuming
             const currentActiveTab = document.querySelector('.services-our-services-content-item.active');
             if (currentActiveTab) {
+                currentActiveTab.classList.remove('paused');
                 restartProgressBar(currentActiveTab);
             }
             startAutoTabCycle();
@@ -115,22 +117,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            stopAutoTabCycle(); // Stop auto-cycling when user clicks
+            stopAutoTabCycle(); 
             switchToTab(this);
         });
 
         tab.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                stopAutoTabCycle(); // Stop auto-cycling when user uses keyboard
+                stopAutoTabCycle(); 
                 this.click();
             }
         });
     });
 
-    // Only start auto-cycling if we're on the services page
     if (tabs.length > 0) {
-        // Start progress bar for the initially active tab
         const initialActiveTab = document.querySelector('.services-our-services-content-item.active');
         if (initialActiveTab) {
             setTimeout(() => {
@@ -231,7 +231,6 @@ window.addEventListener('pageshow', function(event) {
     }
 });
 
-// Mobile Menu Toggle Functionality
 function toggleMobileMenu() {
     const sidebar = document.getElementById('mobile-sidebar');
     const overlay = document.getElementById('mobile-sidebar-overlay');
@@ -241,13 +240,11 @@ function toggleMobileMenu() {
         const isOpen = sidebar.classList.contains('open');
         
         if (isOpen) {
-            // Close menu
             sidebar.classList.remove('open');
             overlay.classList.remove('show');
             toggleButton.classList.remove('active');
             document.body.style.overflow = '';
         } else {
-            // Open menu
             sidebar.classList.add('open');
             overlay.classList.add('show');
             toggleButton.classList.add('active');
@@ -256,13 +253,11 @@ function toggleMobileMenu() {
     }
 }
 
-// Close mobile menu when clicking on navigation links
 document.addEventListener('DOMContentLoaded', function() {
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-item, .mobile-contact-button');
     
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', function() {
-            // Close the mobile menu
             const sidebar = document.getElementById('mobile-sidebar');
             const overlay = document.getElementById('mobile-sidebar-overlay');
             const toggleButton = document.querySelector('.mobile-menu-toggle');
@@ -277,7 +272,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Handle escape key to close mobile menu
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const sidebar = document.getElementById('mobile-sidebar');
@@ -293,7 +287,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Handle window resize to close mobile menu on larger screens
 window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         const sidebar = document.getElementById('mobile-sidebar');
